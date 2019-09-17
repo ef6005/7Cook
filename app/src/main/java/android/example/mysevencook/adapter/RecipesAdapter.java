@@ -1,5 +1,7 @@
-package android.example.mysevencook;
+package android.example.mysevencook.adapter;
 
+import android.example.mysevencook.R;
+import android.example.mysevencook.Recipe;
 import android.example.mysevencook.service.ServiceProvider;
 import android.example.mysevencook.service.image.ImageLoadingService;
 import android.view.LayoutInflater;
@@ -15,12 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
+public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder> {
 
     List<Recipe> mRecipes = new ArrayList<>();
 
-    public RecipeAdapter(List<Recipe> recipes) {
+    public RecipesAdapter(List<Recipe> recipes) {
         mRecipes = recipes;
+    }
+
+    public void setRecipes(List<Recipe> mRecipes) {
+        this.mRecipes = mRecipes;
+        notifyDataSetChanged();
     }
 
     @NonNull

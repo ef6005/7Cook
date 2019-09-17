@@ -1,12 +1,19 @@
 package android.example.mysevencook;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Recipe {
     private int id;
+    @SerializedName("img")
     private String imageUrl;
     private String title;
+    @SerializedName("desc")
     private String description;
+    @SerializedName("by")
     private String author;
+    @SerializedName("rate")
     private float rating;
+    @SerializedName("link")
     private String linkUrl;
 
     public int getId() {
