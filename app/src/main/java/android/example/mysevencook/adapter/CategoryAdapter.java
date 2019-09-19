@@ -1,7 +1,7 @@
 package android.example.mysevencook.adapter;
 
-import android.example.mysevencook.Category;
 import android.example.mysevencook.R;
+import android.example.mysevencook.data.Category;
 import android.example.mysevencook.service.ServiceProvider;
 import android.example.mysevencook.service.image.ImageLoadingService;
 import android.view.LayoutInflater;
@@ -21,9 +21,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     private List<Category> categories = new ArrayList<>();
 
-    public void setCategories(List<Category> categories) {
+    public CategoryAdapter(List<Category> categories) {
         this.categories = categories;
-        notifyDataSetChanged();
     }
 
     @NonNull

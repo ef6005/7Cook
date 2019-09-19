@@ -1,6 +1,11 @@
 package android.example.mysevencook;
 
 import android.content.Context;
+import android.example.mysevencook.data.Category;
+import android.example.mysevencook.data.Recipe;
+import android.example.mysevencook.data.Slider;
+import android.example.mysevencook.data.repo.RepositoryDataLoadCallback;
+import android.example.mysevencook.service.http.GsonRequest;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,7 +30,7 @@ public class ApiService {
         return new ApiService(context);
     }
 
-    public void loadRecipes(ApiServiceCallBack<List<Recipe>> callBack) {
+    public void loadRecipes(RepositoryDataLoadCallback<List<Recipe>> callBack) {
         GsonRequest<List<Recipe>> recipesRequest = new GsonRequest<>(Request.Method.GET, RECIPES_URL
                 , volleyError -> callBack.onError(volleyError)
                 , recipes -> callBack.onLoad(recipes)
@@ -35,7 +40,7 @@ public class ApiService {
         requestQueue.add(recipesRequest);
     }
 
-    public void loadSliders(ApiServiceCallBack<List<Slider>> callBack) {
+    public void loadSliders(RepositoryDataLoadCallback<List<Slider>> callBack) {
         GsonRequest<List<Slider>> slidersRequest = new GsonRequest<>(Request.Method.GET, SLIDERS_URL
                 , volleyError -> callBack.onError(volleyError)
                 , sliders -> callBack.onLoad(sliders)
@@ -44,7 +49,7 @@ public class ApiService {
         requestQueue.add(slidersRequest);
     }
 
-    public void loadCategories(ApiServiceCallBack<List<Category>> callBack) {
+    public void loadCategories(RepositoryDataLoadCallback<List<Category>> callBack) {
         GsonRequest<List<Category>> categoriesRequest = new GsonRequest<>(Request.Method.GET, CATEGORIES_URL
                 , volleyError -> callBack.onError(volleyError)
                 , categories -> callBack.onLoad(categories)

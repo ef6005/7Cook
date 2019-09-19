@@ -1,6 +1,8 @@
 package android.example.mysevencook;
 
 import android.example.mysevencook.adapter.SliderAdapter;
+import android.example.mysevencook.data.Slider;
+import android.example.mysevencook.data.repo.RepositoryDataLoadCallback;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,7 @@ public class TestSliderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ApiService.getInstance(getContext()).loadSliders(new ApiServiceCallBack<List<Slider>>() {
+        ApiService.getInstance(getContext()).loadSliders(new RepositoryDataLoadCallback<List<Slider>>() {
             @Override
             public void onLoad(List<Slider> data) {
                 RecyclerView bannersRv = getView().findViewById(R.id.test_slider_rv_banners);

@@ -1,7 +1,7 @@
 package android.example.mysevencook.adapter;
 
 import android.example.mysevencook.R;
-import android.example.mysevencook.Slider;
+import android.example.mysevencook.data.Slider;
 import android.example.mysevencook.service.ServiceProvider;
 import android.example.mysevencook.service.image.ImageLoadingService;
 import android.view.LayoutInflater;

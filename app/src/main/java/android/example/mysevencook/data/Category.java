@@ -1,4 +1,4 @@
-package android.example.mysevencook;
+package android.example.mysevencook.data;
 
 import com.google.gson.annotations.SerializedName;
 

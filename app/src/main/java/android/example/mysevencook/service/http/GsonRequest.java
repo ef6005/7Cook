@@ -1,4 +1,4 @@
-package android.example.mysevencook;
+package android.example.mysevencook.service.http;
 
 
 import androidx.annotation.Nullable;
