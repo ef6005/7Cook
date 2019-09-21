@@ -1,6 +1,6 @@
 package android.example.mysevencook.data.repo;
 
-import android.example.mysevencook.data.Slider;
+import android.example.mysevencook.data.Banner;
 import android.example.mysevencook.service.http.HttpClient;
 import android.example.mysevencook.service.http.HttpRequest;
 
@@ -17,12 +17,12 @@ public class SliderCloudDataSource implements SliderDataSource {
     }
 
     @Override
-    public void getAll(RepositoryDataLoadCallback<List<Slider>> repositoryDataLoadCallback) {
-        HttpRequest<List<Slider>> sliderRequest = new HttpRequest<>(SLIDER_URL, new TypeToken<List<Slider>>() {
+    public void getAll(RepositoryDataLoadCallback<List<Banner>> repositoryDataLoadCallback) {
+        HttpRequest<List<Banner>> sliderRequest = new HttpRequest<>(SLIDER_URL, new TypeToken<List<Banner>>() {
         }.getType()
-                , new HttpRequest.ResponseCallback<List<Slider>>() {
+                , new HttpRequest.ResponseCallback<List<Banner>>() {
             @Override
-            public void onSuccess(List<Slider> result) {
+            public void onSuccess(List<Banner> result) {
                 repositoryDataLoadCallback.onLoad(result);
             }
 

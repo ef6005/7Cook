@@ -2,7 +2,7 @@ package android.example.mysevencook.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Slider {
+public class Banner {
     private int id;
     @SerializedName("link")
     private String linkUrl;

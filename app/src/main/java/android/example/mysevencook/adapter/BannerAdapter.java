@@ -1,7 +1,7 @@
 package android.example.mysevencook.adapter;
 
 import android.example.mysevencook.R;
-import android.example.mysevencook.data.Slider;
+import android.example.mysevencook.data.Banner;
 import android.example.mysevencook.service.ServiceProvider;
 import android.example.mysevencook.service.image.ImageLoadingService;
 import android.view.LayoutInflater;
@@ -14,18 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
+public class BannerAdapter extends RecyclerView.Adapter<BannerAdapter.SliderViewHolder> {
 
-    private List<Slider> sliders;
+    private List<Banner> banners;
 
-    public SliderAdapter(List<Slider> sliders) {
-        this.sliders = sliders;
+    public BannerAdapter(List<Banner> banners) {
+        //fix api bug on banners
+        if (banners.size() > 2) {
+            Banner temp = banners.get(0);
+            banners.set(0, banners.get(1));
+            banners.set(1, temp);
+            temp = banners.get(1);
+            banners.set(1, banners.get(2));
+            banners.set(2, temp);
+            banners.remove(2);
+        }
+        this.banners = banners;
     }
 
-    public void setSliders(List<Slider> sliders) {
-        this.sliders = sliders;
-        notifyDataSetChanged();
-    }
+
 
     @NonNull
     @Override
@@ -35,12 +42,12 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
-        holder.bindSlider(sliders.get(position));
+        holder.bindSlider(banners.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return sliders.size();
+        return banners.size();
     }
 
     public class SliderViewHolder extends RecyclerView.ViewHolder {
@@ -52,9 +59,9 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
             bannerIv = itemView.findViewById(R.id.item_slider_iv_banner);
         }
 
-        public void bindSlider(Slider slider) {
+        public void bindSlider(Banner banner) {
             ImageLoadingService imageLoadingService = ServiceProvider.provideImageLoadingService();
-            imageLoadingService.loadImage(slider.getImageUrl(), bannerIv);
+            imageLoadingService.loadImage(banner.getImageUrl(), bannerIv);
         }
     }
 }
