@@ -49,13 +49,13 @@ public class MainFragment extends BaseFragment implements MainContract.MainView 
                 , new CategoryRepository(new CategoryCloudDataSource(ServiceProvider.provideHttpClient(getContext())))
                 , new RecipeRepository(new RecipeCloudDataSource(ServiceProvider.provideHttpClient(getContext()))));
 
-        mainPresenter.onAttach(this);
+        mainPresenter.attachView(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mainPresenter.onDetach();
+        mainPresenter.detachView();
     }
 
     @Override

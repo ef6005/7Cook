@@ -1,6 +1,6 @@
-package android.example.mysevencook.main;
+package android.example.mysevencook;
 
-import android.example.mysevencook.R;
+import android.example.mysevencook.main.MainFragment;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_fl_container, new MainFragment())
+                .replace(R.id.main_fl_container, new MainFragment())
                 .commit();
     }
 }

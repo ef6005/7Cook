@@ -23,17 +23,17 @@ public class MainPresenter implements MainContract.MainPresenter {
     }
 
     @Override
-    public void onAttach(MainContract.MainView view) {
+    public void attachView(MainContract.MainView view) {
         this.mainView = view;
 
         mainView.setRefreshingProgressBar(true);
 
-        showSlidersAsync();
-        showCategoriesAsync();
-        showRecipesAsync();
+        loadSlider();
+        loadCategories();
+        loadRecipes();
     }
 
-    private void showRecipesAsync() {
+    private void loadRecipes() {
         recipeRepository.getAll(new RepositoryDataLoadCallback<List<Recipe>>() {
             @Override
             public void onLoad(List<Recipe> data) {
@@ -54,7 +54,7 @@ public class MainPresenter implements MainContract.MainPresenter {
         });
     }
 
-    private void showCategoriesAsync() {
+    private void loadCategories() {
         categoryRepository.getAll(new RepositoryDataLoadCallback<List<Category>>() {
             @Override
             public void onLoad(List<Category> data) {
@@ -75,7 +75,7 @@ public class MainPresenter implements MainContract.MainPresenter {
         });
     }
 
-    private void showSlidersAsync() {
+    private void loadSlider() {
         sliderRepository.getAll(new RepositoryDataLoadCallback<List<Banner>>() {
             @Override
             public void onLoad(List<Banner> data) {
@@ -97,7 +97,7 @@ public class MainPresenter implements MainContract.MainPresenter {
     }
 
     @Override
-    public void onDetach() {
+    public void detachView() {
         this.mainView = null;
     }
 }

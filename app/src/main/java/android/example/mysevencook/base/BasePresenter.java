@@ -1,7 +1,7 @@
 package android.example.mysevencook.base;
 
 public interface BasePresenter<T extends BaseView> {
-    void onAttach(T view);
+    void attachView(T view);
 
-    void onDetach();
+    void detachView();
 }
