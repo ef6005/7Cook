@@ -26,8 +26,12 @@ public class MainPresenter implements MainContract.MainPresenter {
     public void attachView(MainContract.MainView view) {
         this.mainView = view;
 
-        mainView.setRefreshingProgressBar(true);
+        onRefresh();
+    }
 
+    @Override
+    public void onRefresh() {
+        mainView.setRefreshingProgressBar(true);
         loadSlider();
         loadCategories();
         loadRecipes();
@@ -100,4 +104,5 @@ public class MainPresenter implements MainContract.MainPresenter {
     public void detachView() {
         this.mainView = null;
     }
+
 }

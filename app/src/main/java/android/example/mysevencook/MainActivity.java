@@ -12,8 +12,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager()
+                .beginTransaction()
+                //using replace() instead of add() because of rotations
                 .replace(R.id.main_fl_container, new MainFragment())
                 .commit();
+
     }
 }
